@@ -27,3 +27,7 @@ class Products(models.Model):
 
     def __str__(self):
         return self.name
+
+class Images(models.Model):
+    image = models.ImageField()
+    products = models.ManyToManyField(Products, related_name='images')
