@@ -10,16 +10,7 @@ class Analogs(models.Model):
 
 class Products(models.Model):
     name = models.CharField(max_length=20)
-    _analogs = models.ForeignKey(Analogs, on_delete=models.SET_NULL, null=True, blank=True)
-
-    @property
-    def analogs(self):
-        # return [product.name for product in self.analogs.products_set.all()]
-        return 'products-set'
-
-    @analogs.setter
-    def analogs(self, value):
-        pass
+    analogs = models.ForeignKey(Analogs, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Product'
@@ -30,4 +21,4 @@ class Products(models.Model):
 
 class Images(models.Model):
     image = models.ImageField()
-    products = models.ManyToManyField(Products, related_name='images')
+    products = models.ManyToManyField(Products)

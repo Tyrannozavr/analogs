@@ -13,3 +13,8 @@ class Group(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Images(models.Model):
+    image = models.ImageField()
+    person = models.ManyToManyField(Person)
